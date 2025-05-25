@@ -1,0 +1,13 @@
+:root {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16pt;
+}
+
+p {
+    margin: 0;
+}
+
+#app {
+    max-width: 70vh;
+    margin: 0 auto;
+}
