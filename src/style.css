@@ -3,11 +3,19 @@
     font-size: 16pt;
 }
 
+body {
+    margin: 0;
+}
+
 p {
     margin: 0;
 }
 
+button,
+input {
+    font: inherit;
+}
+
 #app {
-    max-width: 70vh;
     margin: 0 auto;
 }

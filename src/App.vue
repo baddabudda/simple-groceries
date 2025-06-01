@@ -1,22 +1,17 @@
 <script setup>
 import { ref } from 'vue';
 import ItemComponent from './components/ItemComponent.vue'
-
-// const items = ref([
-//   {id: 0, item_name: 'Apple', item_data: '3 medium', bought: false},
-//   {id: 1, item_name: 'Banana', item_data: '4', bought: false},
-//   {id: 2, item_name: 'Grapes', item_data: '500g', bought: true},
-//   {id: 3, item_name: 'Soap', item_data: '1pcs', bought: false},
-//   {id: 4, item_name: 'Rope', item_data: '3m', bought: true},
-// ])
+import AddItem from './components/AddItem.vue'
+import AddInput from './components/AddInput.vue';
 
 const items = ref([])
 
 const id_counter = ref(items.value.length)
+const showAddItemDialog = ref(false)
 
-function addItem() {
+function addItem(item) {
   let id = id_counter.value
-  items.value.push({id: id, item_name: `Test ${id}`, item_data: 'None', bought: false})
+  items.value.push({id: id, item_name: item, item_data: "", bought: false})
   id_counter.value++
 }
 
@@ -25,21 +20,32 @@ function deleteItemById(id) {
   items.value.splice(item_id, 1)
   console.log(items.value)
 }
+
+function showAddDialog() {
+  showAddItemDialog.value = true
+}
+
+function handleSubmit(item) {
+  showAddItemDialog.value = false
+  addItem(item)
+}
 </script>
 
 <template>
-  <button class="add-button" @click="addItem">Add thing</button>
-  <div class="container">
-    <ItemComponent v-for="item in items" :item :key="item.id" @on-item-checked="deleteItemById"/>
+  <div class="main-container">
+    <div class="container">
+      <ItemComponent v-for="item in items" :item :key="item.id" @on-item-checked="deleteItemById"/>
+    </div>
+    <AddInput @on-submit="handleSubmit"/>
   </div>
 </template>
 
 <style scoped>
-.add-button {
-  width: 100%;
-  font-size: 1rem;
-  outline: none;
-  margin-bottom: 1em;
+.main-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .add-button:hover {
@@ -48,7 +54,10 @@ function deleteItemById(id) {
 
 .container {
   display: flex;
+  flex: 1;
+  overflow-y: auto;
   flex-direction: column;
   gap: 0.5em;
+  padding: 0 0 0.5rem 0;
 }
 </style>

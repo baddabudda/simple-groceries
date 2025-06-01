@@ -22,7 +22,7 @@ function onItemChecked() {
     <div class="item-container" :class="{inactive: checked}">
       <div class="item-info">
         <p class="item-name">{{ props.item.item_name }}</p>
-        <p class="item-description">{{ props.item.item_data }}</p>
+        <!-- <p class="item-description">{{ props.item.item_data }}</p> -->
       </div>
       <input class="checkbox" type="checkbox" @click="onItemChecked">
     </div>
@@ -38,6 +38,7 @@ function onItemChecked() {
   border-width: 1px;
   border-radius: 6px;
   padding: 0.5em 1em;
+  margin: 0 0.5rem;
 }
 
 .inactive {
