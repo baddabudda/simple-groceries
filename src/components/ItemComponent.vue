@@ -38,7 +38,6 @@ function onItemChecked() {
   border-width: 1px;
   border-radius: 6px;
   padding: 0.5em 1em;
-  margin: 0 0.5rem;
 }
 
 .inactive {

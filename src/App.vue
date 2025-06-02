@@ -52,9 +52,12 @@ function saveItem() {
 <style scoped>
 .main-container {
   display: flex;
+  height: 100vh;
   height: 100dvh;
+  max-width: 30rem;
   flex-direction: column;
   overflow: hidden;
+  margin: auto;
 }
 
 .add-button:hover {

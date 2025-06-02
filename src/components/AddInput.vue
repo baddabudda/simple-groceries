@@ -7,7 +7,7 @@ const itemData = ref('')
 const emit = defineEmits(["onSubmit"])
 
 function onSubmitClicked() {
-    if (itemName !== "") {
+    if (itemName.value !== "") {
         let item = {
             name: itemName.value,
             data: itemData.value
@@ -39,7 +39,6 @@ function clearInput() {
     background-color: white;
     display: flex;
     flex-direction: row;
-    padding: 0.1rem 0.2rem;
 }
 
 .input-container {
@@ -53,7 +52,6 @@ function clearInput() {
     display: block;
     min-width: 0;
     flex: 1;
-    padding: 0.1em 0.2em;
     outline: none;
     border-width: 0;
     border-style: solid;
@@ -63,12 +61,14 @@ function clearInput() {
 .name {
     border-width: 1px 0 0 1px;
     border-radius: 6px 0 0 0;
+    padding: 0 0 0 0.5rem;
     font-size: 1.2rem;
 }
 
 .data {
     border-width: 0 0 1px 1px;
     border-radius: 0 0 0 6px;
+    padding: 0 0 0 0.5rem;
     font-size: 1rem;
 }
 
