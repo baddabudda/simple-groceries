@@ -1,33 +1,42 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import ItemComponent from './components/ItemComponent.vue'
-import AddItem from './components/AddItem.vue'
 import AddInput from './components/AddInput.vue';
 
 const items = ref([])
+const currentId = ref(-1)
 
-const id_counter = ref(items.value.length)
-const showAddItemDialog = ref(false)
+const itemsKey = "items"
+const idKey = "last_id"
+
+onMounted(() => {
+  if (localStorage.getItem(itemsKey)) {
+    items.value = JSON.parse(localStorage.getItem(itemsKey))
+    currentId.value = JSON.parse(localStorage.getItem(idKey))
+  }
+})
 
 function addItem(item) {
-  let id = id_counter.value
-  items.value.push({id: id, item_name: item, item_data: "", bought: false})
-  id_counter.value++
+  currentId.value++
+  items.value.push({id: currentId.value, item_name: item.name, item_data: item.data,bought: false})
+  saveItem()
 }
 
 function deleteItemById(id) {
   let item_id = items.value.findIndex((item) => item.id == id)
   items.value.splice(item_id, 1)
+  saveItem()
   console.log(items.value)
 }
 
-function showAddDialog() {
-  showAddItemDialog.value = true
+function handleSubmit(item) {
+  addItem(item)
 }
 
-function handleSubmit(item) {
-  showAddItemDialog.value = false
-  addItem(item)
+function saveItem() {
+  const parsed = JSON.stringify(items.value)
+  localStorage.setItem(itemsKey, parsed)
+  localStorage.setItem(idKey, currentId.value)
 }
 </script>
 
