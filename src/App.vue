@@ -19,7 +19,7 @@ onMounted(() => {
 
 function addItem(item) {
   currentId.value++
-  items.value.push({id: currentId.value, item_name: item.name, item_data: item.data,bought: false})
+  items.value.push({id: currentId.value, item_name: item.name, item_data: item.data, bought: false})
   saveItem()
 }
 

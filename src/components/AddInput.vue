@@ -7,10 +7,14 @@ const itemData = ref('')
 const emit = defineEmits(["onSubmit"])
 
 function onSubmitClicked() {
-    if (itemName.value !== "") {
+    let inputSplit = itemName.value.split('\n')
+
+    if (inputSplit[0] !== "") {
+        console.log(inputSplit)
+        
         let item = {
-            name: itemName.value,
-            data: itemData.value
+            name: inputSplit[0],
+            data: inputSplit[1] !== "" ? inputSplit[1] : ""
         }
 
         emit("onSubmit", item)
@@ -28,8 +32,9 @@ function clearInput() {
     <div class="position-container">
         <div class="add-container">
             <div class="input-container">
-                <input type="text" maxlength="16" class="input name" v-model="itemName" placeholder="Item name...">
-                <input type="text" maxlength="16" class="input data" v-model="itemData" placeholder="Item data...">
+                <!-- <input type="text" maxlength="16" class="input name" v-model="itemName" placeholder="Item name..."> -->
+                <!-- <input type="text" maxlength="16" class="input data" v-model="itemData" placeholder="Item data..."> -->
+                <textarea rows="2" class="input name" v-model="itemName" placeholder="Item"></textarea>
             </div>
             <button class="button submit" @click="onSubmitClicked">&plus;</button>
         </div>
@@ -69,6 +74,7 @@ function clearInput() {
     border-width: 0;
     border-style: solid;
     border-color: gray;
+    resize: none;
 }
 
 .name {
