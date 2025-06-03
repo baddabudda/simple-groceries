@@ -51,12 +51,9 @@ function saveItem() {
 
 <style scoped>
 .main-container {
-  display: flex;
   height: 100vh;
   height: 100dvh;
   max-width: 30rem;
-  flex-direction: column;
-  overflow: hidden;
   margin: auto;
 }
 
@@ -67,9 +64,8 @@ function saveItem() {
 .container {
   display: flex;
   flex: 1;
-  overflow-y: auto;
   flex-direction: column;
   gap: 0.5em;
-  padding: 0 0 0.5rem 0;
+  padding: 0.5rem 0 4.5rem 0;
 }
 </style>

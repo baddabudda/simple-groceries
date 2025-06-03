@@ -39,6 +39,13 @@ function clearInput() {
     background-color: white;
     display: flex;
     flex-direction: row;
+    max-width: 30rem;
+    height: 4rem;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .input-container {
