@@ -32,7 +32,6 @@ function clearInput() {
                 <input type="text" maxlength="16" class="input data" v-model="itemData" placeholder="Item data...">
             </div>
             <button class="button submit" @click="onSubmitClicked">&plus;</button>
-            <button class="button submit" @click="onSubmitClicked">&circlearrowleft;</button>
         </div>
     </div>
 </template>

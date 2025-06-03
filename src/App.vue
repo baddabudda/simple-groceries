@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import ItemComponent from './components/ItemComponent.vue'
-import AddInput from './components/AddInput.vue';
+import AddInput from './components/AddInput.vue'
+import ToolbarComponent from './components/ToolbarComponent.vue'
 
 const items = ref([])
 const currentId = ref(-1)
@@ -38,10 +39,22 @@ function saveItem() {
   localStorage.setItem(itemsKey, parsed)
   localStorage.setItem(idKey, currentId.value)
 }
+
+function deleteAll() {
+  console.log("Cleaning...")
+  localStorage.clear()
+  resetValues()
+}
+
+function resetValues() {
+  currentId.value = -1
+  items.value = []
+}
 </script>
 
 <template>
   <div class="main-container">
+    <ToolbarComponent @on-delete-all="deleteAll"/>
     <div class="container">
       <ItemComponent v-for="item in items" :item :key="item.id" @on-item-checked="deleteItemById"/>
     </div>
@@ -66,6 +79,6 @@ function saveItem() {
   flex: 1;
   flex-direction: column;
   gap: 0.5em;
-  padding: 0.5rem 0 4.5rem 0;
+  padding: 3.5rem 0 4.5rem 0;
 }
 </style>
