@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import ItemComponent from './components/ItemComponent.vue'
-import AddInput from './components/AddInput.vue'
+import InfoInput from './components/InfoInput.vue'
 import ToolbarComponent from './components/ToolbarComponent.vue'
 
 const items = ref([])
@@ -58,27 +58,22 @@ function resetValues() {
     <div class="container">
       <ItemComponent v-for="item in items" :item :key="item.id" @on-item-checked="deleteItemById"/>
     </div>
-    <AddInput @on-submit="handleSubmit"/>
+    <InfoInput @on-submit="handleSubmit"/>
   </div>
 </template>
 
 <style scoped>
 .main-container {
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   max-width: 30rem;
+  padding: 3.5rem 0;
   margin: auto;
-}
-
-.add-button:hover {
-  cursor: pointer;
 }
 
 .container {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 0.5em;
-  padding: 3.5rem 0 4.5rem 0;
 }
 </style>

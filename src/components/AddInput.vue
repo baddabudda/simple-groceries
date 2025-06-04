@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
 
 const itemName = ref('')
 const itemData = ref('')
@@ -19,6 +20,8 @@ function onSubmitClicked() {
 
         emit("onSubmit", item)
         clearInput()
+    } else {
+        console.log("Trying to submit with empty name")
     }
 }
 
@@ -31,12 +34,14 @@ function clearInput() {
 <template>
     <div class="position-container">
         <div class="add-container">
-            <div class="input-container">
-                <!-- <input type="text" maxlength="16" class="input name" v-model="itemName" placeholder="Item name..."> -->
-                <!-- <input type="text" maxlength="16" class="input data" v-model="itemData" placeholder="Item data..."> -->
-                <textarea rows="2" class="input name" v-model="itemName" placeholder="Item"></textarea>
-            </div>
-            <button class="button submit" @click="onSubmitClicked">&plus;</button>
+            <!-- <div class="input-container">
+                <input type="text" maxlength="16" class="input name" v-model="itemName" placeholder="Item name...">
+                <input type="text" maxlength="16" class="input data" v-model="itemData" placeholder="Item data...">
+            </div> -->
+            <textarea class="input-item" v-model="itemName" placeholder="Item"></textarea>
+            <button class="button-submit" @click="onSubmitClicked">
+                <Icon icon="fa6-solid:plus" />
+            </button>
         </div>
     </div>
 </template>
@@ -44,56 +49,61 @@ function clearInput() {
 <style scoped>
 .position-container {
     background-color: white;
-    max-width: 30rem;
-    height: 4rem;
+    height: var(--toolbar-height);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: var(--border-width) solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .position-container {
+    background-color: white;
+    height: 3rem;
     margin: 0 auto;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-}
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+} */
 
 .add-container {
-    height: inherit;
+    /* display: flex;
+    align-items: center; */
+    max-width: 30rem;
+    flex-grow: 1;
     display: flex;
-    flex-direction: row;
 }
 
-.input-container {
-    width: 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
+/* .add-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+} */
 
-.input {
-    display: block;
+/* .input-item {
+    outline: none;
     min-width: 0;
-    flex: 1;
-    outline: none;
-    border-width: 0;
-    border-style: solid;
-    border-color: gray;
     resize: none;
-}
-
-.name {
-    font-size: 1.2rem;
-}
-
-.data {
     font-size: 1rem;
+    border: none;
+} */
+
+.input-item {
+    outline: none;
+    min-width: 0;
+    resize: none;
+    flex-grow: 1;
 }
 
-.button {
-    height: 3rem;
-    width: 3rem;
-    font-size: 1.5rem;
+/* .button-submit {
+    aspect-ratio: 1 / 1;
     outline: none;
-    border-style: solid;
-    border-color: gray;
-    border-width: 0;
     cursor: pointer;
-    margin: auto 0;
-}
+    border: none;
+} */
 </style>
