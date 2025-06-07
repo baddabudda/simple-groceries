@@ -1,49 +1,49 @@
 *,
 ::before,
 ::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @layer reset {
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-    body {
-        margin: unset;
-    }
+  body {
+    margin: unset;
+  }
 
-    button,
-    input,
-    textarea,
-    select {
-        font: inherit;
-    }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
 
-    img,
-    picture,
-    svg,
-    canvas {
-        display: block;
-        max-inline-size: 100%;
-        height: auto;
-    }
+  img,
+  picture,
+  svg,
+  canvas {
+    display: block;
+    max-inline-size: 100%;
+    height: auto;
+  }
 }
 
 :root {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16pt;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16pt;
 
-    --toolbar-height: 3em;
-    --border-width: 1px;
+  --toolbar-height: 2em;
+  --border-width: 1px;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 #app {
-    margin: 0 auto;
+  margin: 0 auto;
 }

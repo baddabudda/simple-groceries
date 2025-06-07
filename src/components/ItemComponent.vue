@@ -1,31 +1,35 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-const emit = defineEmits(['onItemChecked'])
+const emit = defineEmits(["onItemChecked"]);
 
-const props = defineProps(['item'])
-const checked = ref(props.item.bought)
+const props = defineProps(["item"]);
+const checked = ref(props.item.bought);
 
 function updateState() {
-  props.item.bought = !props.item.bought
-  checked.value = props.item.bought
+  props.item.bought = !props.item.bought;
+  checked.value = props.item.bought;
 }
 
 function onItemChecked() {
-  updateState()
+  updateState();
   // console.log(props.item.id)
-  setTimeout(() => { emit('onItemChecked', props.item.id) }, 250)
+  setTimeout(() => {
+    emit("onItemChecked", props.item.id);
+  }, 250);
 }
 </script>
 
 <template>
-    <div class="item-container" :class="{inactive: checked}">
-      <div class="item-info">
-        <p class="item-name">{{ props.item.item_name }}</p>
-        <p class="item-description" v-if="props.item.item_data">{{ props.item.item_data }}</p>
-      </div>
-      <input class="checkbox" type="checkbox" @click="onItemChecked">
+  <div class="item-container" :class="{ inactive: checked }">
+    <div class="item-info">
+      <p class="item-name">{{ props.item.item_name }}</p>
+      <p class="item-description" v-if="props.item.item_data">
+        {{ props.item.item_data }}
+      </p>
     </div>
+    <input class="checkbox" type="checkbox" @click="onItemChecked" />
+  </div>
 </template>
 
 <style scoped>
