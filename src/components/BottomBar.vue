@@ -55,6 +55,7 @@ function clearInput() {
           v-model="itemName"
           ref="nameInput"
           type="text"
+          placeholder="item"
         />
         <!-- <input class="data-input" @keypress.enter="submit" v-show="extended" ref="dataInput" v-model="itemData" type="text"><br v-show="extended"> -->
         <input
@@ -64,13 +65,14 @@ function clearInput() {
           ref="dataInput"
           v-model="itemData"
           type="text"
+          placeholder="info"
         />
       </div>
       <button class="form-button extend" @click="extend">
-        <Icon icon="fa6-solid:chevron-down"></Icon>
+        <Icon icon="fa6-solid:chevron-down" class="icon"/>
       </button>
       <button class="form-button submit" @click="submit">
-        <Icon icon="famicons:send"></Icon>
+        <Icon icon="famicons:send" class="icon" />
       </button>
     </div>
   </div>
@@ -78,7 +80,7 @@ function clearInput() {
 
 <style scoped>
 .bottom-bar-container {
-  background-color: red;
+  background-color: var(--bg-secondary);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -92,7 +94,7 @@ function clearInput() {
   flex-grow: 1;
   max-width: var(--max-width-content);
   min-width: 0;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 }
 .expandable-input {
   display: flex;
@@ -101,10 +103,16 @@ function clearInput() {
   min-width: 0;
 }
 .form-button {
-  background-color: lightgray;
+  background-color: var(--bg-secondary);
   border: none;
+  cursor: pointer;
+}
+.form-button:hover > .icon {
+  color: var(--text-primary);
 }
 .form-input {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   outline: none;
   border: none;
   padding: 0 0.2rem;

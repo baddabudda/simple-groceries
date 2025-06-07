@@ -6,6 +6,7 @@
   }
 
   body {
+    background-color: var(--bg-primary);
     margin: unset;
   }
 
@@ -32,7 +33,9 @@
 
   --toolbar-height: 2em;
   --border-width: 1px;
-  --max-width-content: 30em;
+  --max-width-content: 40em;
+
+  --icon-height: 1em;
 
   --bg-primary: #121212;
   --bg-secondary: #1e1e1e;
@@ -42,6 +45,11 @@
   --accent: #646cff; 
   --accent-hover: #747bff;
   --border: #3a3a3a;
+}
+
+.icon {
+  height: var(--icon-height); 
+  color: var(--text-secondary);
 }
 
 p {
