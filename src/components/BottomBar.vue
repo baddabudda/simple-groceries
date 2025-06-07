@@ -1,5 +1,6 @@
 <script setup>
-import { nextTick, ref } from "vue";
+import { nextTick, ref } from "vue"
+import { Icon } from "@iconify/vue"
 
 const extended = ref(false);
 
@@ -48,6 +49,7 @@ function clearInput() {
     <div class="form-container">
       <div class="expandable-input">
         <input
+          class="form-input name"
           @keypress.ctrl.enter.exact="submit"
           @keypress.enter.exact="extend"
           v-model="itemName"
@@ -56,7 +58,7 @@ function clearInput() {
         />
         <!-- <input class="data-input" @keypress.enter="submit" v-show="extended" ref="dataInput" v-model="itemData" type="text"><br v-show="extended"> -->
         <input
-          class="data-input"
+          class="form-input data"
           @keypress.enter="submit"
           v-show="extended"
           ref="dataInput"
@@ -64,8 +66,12 @@ function clearInput() {
           type="text"
         />
       </div>
-      <button @click="extend">Extend</button><br />
-      <button class="submit-button" @click="submit">Submit</button>
+      <button class="form-button extend" @click="extend">
+        <Icon icon="fa6-solid:chevron-down"></Icon>
+      </button>
+      <button class="form-button submit" @click="submit">
+        <Icon icon="famicons:send"></Icon>
+      </button>
     </div>
   </div>
 </template>
@@ -74,21 +80,33 @@ function clearInput() {
 .bottom-bar-container {
   background-color: red;
   position: fixed;
-  /* max-width: 30rem; */
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
-  /* overflow: hidden; */
+  padding: 0.3rem 0;
 }
 .form-container {
   display: flex;
+  flex-grow: 1;
+  max-width: var(--max-width-content);
+  min-width: 0;
+  border: 1px solid gray;
 }
 .expandable-input {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+.form-button {
+  background-color: lightgray;
+  border: none;
+}
+.form-input {
+  outline: none;
+  border: none;
+  padding: 0 0.2rem;
 }
 </style>

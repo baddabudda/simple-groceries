@@ -38,6 +38,7 @@
 
   --toolbar-height: 2em;
   --border-width: 1px;
+  --max-width-content: 30em;
 }
 
 p {
