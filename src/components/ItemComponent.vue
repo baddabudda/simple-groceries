@@ -15,10 +15,10 @@ function onItemChecked() {
 </script>
 
 <template>
-  <div class="item-container" :class="{ inactive: checked }">
-    <div class="item-info">
-      <p class="item-name">{{ props.item.item_name }}</p>
-      <p class="item-description" v-if="props.item.item_data">
+  <div class="item-container">
+    <div class="item-info" >
+      <p class="item-name" :class="{ inactive: checked }">{{ props.item.item_name }}</p>
+      <p class="item-description" v-if="props.item.item_data" :class="{ inactive: checked}">
         {{ props.item.item_data }}
       </p>
     </div>
@@ -37,15 +37,10 @@ function onItemChecked() {
   padding: 0.5em 1em;
 }
 
-.inactive {
-  color: gray;
-  text-decoration: line-through;
-}
-
 .checkbox {
   outline: none;
   width: 20px;
-  height: 20px;
+  aspect-ratio: 1 / 1;
 }
 
 .checkbox:checked {
@@ -57,6 +52,7 @@ function onItemChecked() {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  overflow: hidden;
 }
 
 .item-name {
@@ -66,5 +62,10 @@ function onItemChecked() {
 .item-description {
   color: var(--text-secondary);
   font-size: 0.8rem;
+}
+
+.inactive {
+  color: var(--inactive);
+  text-decoration: line-through;
 }
 </style>

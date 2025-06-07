@@ -45,6 +45,24 @@
   --accent: #646cff; 
   --accent-hover: #747bff;
   --border: #3a3a3a;
+  --inactive: #414141;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border: var(--border-width) solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .icon {
