@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import ItemComponent from "./components/ItemComponent.vue";
-import InfoInput from "./components/InfoInput.vue";
 import ToolbarComponent from "./components/ToolbarComponent.vue";
 import BottomBar from "./components/BottomBar.vue";
 
@@ -24,13 +23,13 @@ function addItem(item) {
     id: currentId.value,
     item_name: item.name,
     item_data: item.data,
-    bought: false,
+    checked: false,
   });
   saveItem();
 }
 
 function deleteItemById(id) {
-  let item_id = items.value.findIndex((item) => item.id == id);
+  let item_id = items.value.findIndex((item) => item.id == id)
   items.value.splice(item_id, 1);
   saveItem();
   console.log(items.value);
@@ -56,6 +55,12 @@ function resetValues() {
   currentId.value = -1;
   items.value = [];
 }
+
+function handleCheck(id) {
+  let item_id = items.value.findIndex((item) => item.id === id)
+  items.value[item_id].checked = !items.value[item_id].checked
+  saveItem()
+}
 </script>
 
 <template>
@@ -65,8 +70,8 @@ function resetValues() {
       <ItemComponent
         v-for="item in items"
         :item
-        :key="item.id"
-        @on-item-checked="deleteItemById"
+        :key="item.id + item.checked"
+        @on-item-checked="handleCheck"
       />
     </div>
     <!-- <InfoInput @on-submit="handleSubmit"/> -->
@@ -78,7 +83,7 @@ function resetValues() {
 .main-container {
   min-height: 100vh;
   min-height: 100dvh;
-  max-width: 30rem;
+  max-width: var(--max-width-content);
   padding: 3.5rem 0;
   margin: auto;
 }
