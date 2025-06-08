@@ -1,49 +1,79 @@
-*,
-::before,
-::after {
-    box-sizing: border-box;
-}
-
 @layer reset {
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-    body {
-        margin: unset;
-    }
+  body {
+    background-color: var(--bg-primary);
+    margin: unset;
+  }
 
-    button,
-    input,
-    textarea,
-    select {
-        font: inherit;
-    }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
 
-    img,
-    picture,
-    svg,
-    canvas {
-        display: block;
-        max-inline-size: 100%;
-        height: auto;
-    }
+  img,
+  picture,
+  svg,
+  canvas {
+    display: block;
+    max-inline-size: 100%;
+    height: auto;
+  }
 }
 
 :root {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16pt;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16pt;
 
-    --toolbar-height: 3em;
-    --border-width: 1px;
+  --toolbar-height: 2em;
+  --border-width: 1px;
+  --max-width-content: 40em;
+
+  --icon-height: 1em;
+
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2d2d2d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent: #646cff; 
+  --accent-hover: #747bff;
+  --border: #3a3a3a;
+  --inactive: #414141;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border: var(--border-width) solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.icon {
+  height: var(--icon-height); 
+  color: var(--text-secondary);
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 #app {
-    margin: 0 auto;
+  margin: 0 auto;
 }

@@ -1,54 +1,46 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-const emit = defineEmits(['onItemChecked'])
+const emit = defineEmits(["onItemChecked"]);
 
-const props = defineProps(['item'])
-const checked = ref(props.item.bought)
-
-function updateState() {
-  props.item.bought = !props.item.bought
-  checked.value = props.item.bought
-}
+const props = defineProps(["item"]);
+const checked = ref(props.item.checked);
 
 function onItemChecked() {
-  updateState()
-  // console.log(props.item.id)
-  setTimeout(() => { emit('onItemChecked', props.item.id) }, 250)
+  emit("onItemChecked", props.item.id);
+  // setTimeout(() => {
+  //   emit("onItemChecked", props.item.id);
+  // }, 250);
 }
 </script>
 
 <template>
-    <div class="item-container" :class="{inactive: checked}">
-      <div class="item-info">
-        <p class="item-name">{{ props.item.item_name }}</p>
-        <p class="item-description" v-if="props.item.item_data">{{ props.item.item_data }}</p>
-      </div>
-      <input class="checkbox" type="checkbox" @click="onItemChecked">
+  <div class="item-container">
+    <div class="item-info" >
+      <p class="item-name" :class="{ inactive: checked }">{{ props.item.item_name }}</p>
+      <p class="item-description" v-if="props.item.item_data" :class="{ inactive: checked}">
+        {{ props.item.item_data }}
+      </p>
     </div>
+    <input class="checkbox" type="checkbox" :checked="checked" @click="onItemChecked" />
+  </div>
 </template>
 
 <style scoped>
 .item-container {
+  background-color: var(--bg-primary);
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-color: grey;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 6px;
+  border: 1px solid var(--border);
+  border-radius: 0.5em;
   padding: 0.5em 1em;
-}
-
-.inactive {
-  color: gray;
-  text-decoration: line-through;
 }
 
 .checkbox {
   outline: none;
   width: 20px;
-  height: 20px;
+  aspect-ratio: 1 / 1;
 }
 
 .checkbox:checked {
@@ -60,9 +52,20 @@ function onItemChecked() {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  overflow: hidden;
+}
+
+.item-name {
+  color: var(--text-primary);
 }
 
 .item-description {
+  color: var(--text-secondary);
   font-size: 0.8rem;
+}
+
+.inactive {
+  color: var(--inactive);
+  text-decoration: line-through;
 }
 </style>
