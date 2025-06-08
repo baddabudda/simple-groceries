@@ -1,6 +1,7 @@
 # Simple Groceries
 
 A simple shopping list app built with Vue that saves directly to your browser's localStorage.
+
 Try it out - [Simple Groceries](https://baddabudda.github.io/simple-groceries/).
 
 ## Features
