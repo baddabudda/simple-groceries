@@ -10,7 +10,14 @@ const itemData = ref("");
 const dataInput = ref();
 const nameInput = ref();
 
+const expandIcon = ref();
+
 const emit = defineEmits(["onSubmit"]);
+
+const icons = {
+  expand: "fa6-solid:chevron-up",
+  collapse: "fa6-solid:chevron-up" 
+}
 
 function submit() {
   if (nameInput.value) {
@@ -28,13 +35,28 @@ function submit() {
   }
 }
 
-async function extend() {
-  extended.value = true;
-  await nextTick();
-  if (dataInput.value) {
-    dataInput.value.focus();
+async function handleExpand() {
+  if (extended.value === false) {
+    console.log('expand')
+    extended.value = true
+    await nextTick()
+    focusOnDataInput()
+  } else {
+    extended.value = false
+    await nextTick()
+    focusOnNameInput()
   }
 }
+
+function focusOnDataInput() {
+  if (dataInput.value) {
+    dataInput.value.focus()
+  }
+}
+
+function focusOnNameInput() {
+  nameInput.value.focus()
+} 
 
 function clearInput() {
   itemName.value = "";
@@ -51,7 +73,7 @@ function clearInput() {
         <input
           class="form-input name"
           @keypress.ctrl.enter.exact="submit"
-          @keypress.enter.exact="extend"
+          @keypress.enter.exact="handleExpand"
           v-model="itemName"
           ref="nameInput"
           type="text"
@@ -69,8 +91,9 @@ function clearInput() {
         />
       </div>
       <div class="button-group">
-        <button class="form-button extend" @click="extend">
-          <Icon icon="fa6-solid:chevron-down" class="icon" height="1.3rem"/>
+        <button class="form-button extend" @click="handleExpand">
+          <Icon v-if="!extended" icon="fa6-solid:chevron-down" class="icon" height="1.3rem"/>
+          <Icon v-if="extended" icon="fa6-solid:chevron-up" class="icon" height="1.3rem"/>
         </button>
         <button class="form-button submit" @click="submit">
           <Icon icon="famicons:send" class="icon" height="1.3rem"/>
