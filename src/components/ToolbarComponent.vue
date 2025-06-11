@@ -13,7 +13,7 @@ function onDeleteAllClicked() {
     <div class="toolbar-name">Simple Groceries</div>
     <div class="actions-container">
       <button class="toolbar-action delete" @click="onDeleteAllClicked">
-        <Icon icon="fa6-solid:trash" class="icon" />
+        <Icon icon="fa6-solid:trash" class="icon" height="1.3rem"/>
       </button>
     </div>
   </div>
@@ -22,7 +22,7 @@ function onDeleteAllClicked() {
 <style scoped>
 .toolbar-container {
   background-color: var(--bg-secondary);
-  height: var(--toolbar-height);
+  height: var(--top-bar-height);
   position: fixed;
   top: 0;
   left: 0;

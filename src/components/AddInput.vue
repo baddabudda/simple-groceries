@@ -63,39 +63,12 @@ function clearInput() {
   justify-content: center;
   align-items: center;
 }
-/* .position-container {
-    background-color: white;
-    height: 3rem;
-    margin: 0 auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-style: solid;
-    border-width: 1px;
-    border-color: gray;
-} */
 
 .add-container {
-  /* display: flex;
-    align-items: center; */
   max-width: 30rem;
   flex-grow: 1;
   display: flex;
 }
-
-/* .add-container {
-    display: grid;
-    grid-template-columns: 1fr auto;
-} */
-
-/* .input-item {
-    outline: none;
-    min-width: 0;
-    resize: none;
-    font-size: 1rem;
-    border: none;
-} */
 
 .input-item {
   outline: none;
@@ -104,10 +77,4 @@ function clearInput() {
   flex-grow: 1;
 }
 
-/* .button-submit {
-    aspect-ratio: 1 / 1;
-    outline: none;
-    cursor: pointer;
-    border: none;
-} */
 </style>
