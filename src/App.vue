@@ -74,7 +74,6 @@ function handleCheck(id) {
         @on-item-checked="handleCheck"
       />
     </div>
-    <!-- <InfoInput @on-submit="handleSubmit"/> -->
   </div>
   <BottomBar @on-submit="handleSubmit" />
 </template>
@@ -84,7 +83,10 @@ function handleCheck(id) {
   min-height: 100vh;
   min-height: 100dvh;
   max-width: var(--max-width-content);
-  padding: 3.5rem 0;
+  padding-bottom: calc(var(--bottom-bar-height) + 0.5rem);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: calc(var(--top-bar-height) + 0.5rem);
   margin: auto;
 }
 

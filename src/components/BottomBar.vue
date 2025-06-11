@@ -68,12 +68,14 @@ function clearInput() {
           placeholder="info"
         />
       </div>
-      <button class="form-button extend" @click="extend">
-        <Icon icon="fa6-solid:chevron-down" class="icon"/>
-      </button>
-      <button class="form-button submit" @click="submit">
-        <Icon icon="famicons:send" class="icon" />
-      </button>
+      <div class="button-group">
+        <button class="form-button extend" @click="extend">
+          <Icon icon="fa6-solid:chevron-down" class="icon" height="1.3rem"/>
+        </button>
+        <button class="form-button submit" @click="submit">
+          <Icon icon="famicons:send" class="icon" height="1.3rem"/>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -81,34 +83,29 @@ function clearInput() {
 <style scoped>
 .bottom-bar-container {
   background-color: var(--bg-secondary);
+  max-height: var(--bottom-bar-height);
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  padding: 0.3rem 0;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
 }
 .form-container {
   display: flex;
   flex-grow: 1;
   max-width: var(--max-width-content);
   min-width: 0;
-  /* border: 1px solid gray; */
 }
 .expandable-input {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   min-width: 0;
-}
-.form-button {
-  background-color: var(--bg-secondary);
-  border: none;
-  cursor: pointer;
-}
-.form-button:hover > .icon {
-  color: var(--text-primary);
+  justify-content: center;
+  gap: 0.5rem;
 }
 .form-input {
   background-color: var(--bg-secondary);
@@ -116,5 +113,20 @@ function clearInput() {
   outline: none;
   border: none;
   padding: 0 0.2rem;
+}
+.button-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.form-button {
+  background-color: var(--bg-secondary);
+  height: 2rem;
+  aspect-ratio: 1 / 1;
+  border: none;
+  cursor: pointer;
+}
+.form-button:hover > .icon {
+  color: var(--text-primary);
 }
 </style>
