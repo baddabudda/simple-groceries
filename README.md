@@ -12,7 +12,7 @@ Try it out - [Simple Groceries](https://baddabudda.github.io/simple-groceries/).
 - Check off purchased items (visual strikethrough)
 - One-click clear entire list
 
-### Offline-First
+### Local-First
 - No login required
 - Persistent storage in browser's local storage
 
