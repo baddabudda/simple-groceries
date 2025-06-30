@@ -4,7 +4,7 @@ import { ref } from "vue";
 
 const emit = defineEmits(["onItemChecked", "onItemDeletePressed"]);
 
-const props = defineProps(["item"]);
+const props = defineProps(["item", "editModeEnabled"]);
 const checked = ref(props.item.checked);
 
 function onItemChecked() {
@@ -28,10 +28,10 @@ function onItemDeletePressed() {
       </p>
     </div>
     <div class="actionbar-end">
-      <input class="checkbox" type="checkbox" :checked="checked" @click="onItemChecked" />
-      <button class="icon-button" @click="onItemDeletePressed">
+      <button v-if="editModeEnabled" class="icon-button" @click="onItemDeletePressed">
         <Icon icon="fa-solid:times" class="icon" />
       </button>
+      <input v-else class="checkbox" type="checkbox" :checked="checked" @click="onItemChecked" />
     </div>
   </div>
 </template>
@@ -57,6 +57,7 @@ function onItemDeletePressed() {
   outline: none;
   width: 20px;
   aspect-ratio: 1 / 1;
+  margin: 0;
 }
 
 .checkbox:checked {
