@@ -4,10 +4,6 @@ import { Icon } from "@iconify/vue";
 const emit = defineEmits(["onDeleteAll", "onChangeMode"]);
 const props = defineProps(["editModeEnabled"]);
 
-function onDeleteAllClicked() {
-  emit("onDeleteAll");
-}
-
 function onModeClicked() {
   emit("onChangeMode");
 }
@@ -15,15 +11,14 @@ function onModeClicked() {
 
 <template>
   <div class="toolbar-container">
-    <div class="toolbar-name">Simple Groceries</div>
-    <div class="actions-container">
-      <!-- <button class="toolbar-action delete" @click="onDeleteAllClicked">
-        <Icon icon="fa6-solid:trash" class="icon" height="1.3rem"/>
-      </button> -->
-      <button class="toolbar-action" @click="onModeClicked">
-        <span style="color: white">Edit mode: </span>
-        <span style="color: white">{{ props.editModeEnabled ? "On" : "Off"}}</span>
-      </button>
+    <div class="normal-width">
+      <div class="toolbar-name">Simple Groceries</div>
+      <div class="actions-container">
+        <button class="toolbar-action" @click="onModeClicked">
+          <span style="color: white">Edit mode: </span>
+          <span style="color: white">{{ props.editModeEnabled ? "On" : "Off"}}</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -38,7 +33,7 @@ function onModeClicked() {
   right: 0;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  justify-content: center;
 }
 .toolbar-name {
   color: var(--text-primary);
@@ -51,7 +46,6 @@ function onModeClicked() {
 .toolbar-action {
   background-color: transparent;
   border: none;
-  /* aspect-ratio: 1 / 1; */
   cursor: pointer;
 }
 .toolbar-action:hover > .icon {

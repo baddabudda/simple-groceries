@@ -85,6 +85,14 @@
   color: var(--text-primary);
 }
 
+.normal-width {
+  display: flex;
+  flex-grow: 1;
+  max-width: var(--max-width-content);
+  min-width: 0;
+  padding: 0.5rem 0.5rem;
+}
+
 p {
   margin: 0;
 }

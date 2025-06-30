@@ -14,11 +14,6 @@ const expandIcon = ref();
 
 const emit = defineEmits(["onSubmit"]);
 
-const icons = {
-  expand: "fa6-solid:chevron-up",
-  collapse: "fa6-solid:chevron-up" 
-}
-
 function submit() {
   if (nameInput.value) {
     nameInput.value.focus();
@@ -67,8 +62,7 @@ function clearInput() {
 
 <template>
   <div class="bottom-bar-container">
-    <!-- <InfoInput/> -->
-    <div class="form-container">
+    <div class="normal-width">
       <div class="expandable-input">
         <input
           class="form-input name"
@@ -79,7 +73,6 @@ function clearInput() {
           type="text"
           placeholder="item"
         />
-        <!-- <input class="data-input" @keypress.enter="submit" v-show="extended" ref="dataInput" v-model="itemData" type="text"><br v-show="extended"> -->
         <input
           class="form-input data"
           @keypress.enter="submit"
@@ -91,11 +84,11 @@ function clearInput() {
         />
       </div>
       <div class="button-group">
-        <button class="form-button extend" @click="handleExpand">
+        <button class="icon-button" @click="handleExpand">
           <Icon v-if="!extended" icon="fa6-solid:chevron-down" class="icon" height="1.3rem"/>
           <Icon v-if="extended" icon="fa6-solid:chevron-up" class="icon" height="1.3rem"/>
         </button>
-        <button class="form-button submit" @click="submit">
+        <button class="icon-button" @click="submit">
           <Icon icon="famicons:send" class="icon" height="1.3rem"/>
         </button>
       </div>
@@ -114,13 +107,6 @@ function clearInput() {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem 0.5rem;
-}
-.form-container {
-  display: flex;
-  flex-grow: 1;
-  max-width: var(--max-width-content);
-  min-width: 0;
 }
 .expandable-input {
   display: flex;
@@ -141,15 +127,5 @@ function clearInput() {
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-.form-button {
-  background-color: var(--bg-secondary);
-  height: 2rem;
-  aspect-ratio: 1 / 1;
-  border: none;
-  cursor: pointer;
-}
-.form-button:hover > .icon {
-  color: var(--text-primary);
 }
 </style>
