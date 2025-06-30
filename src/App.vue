@@ -61,6 +61,13 @@ function handleCheck(id) {
   items.value[item_id].checked = !items.value[item_id].checked
   saveItem()
 }
+
+function handleDeleteById(id) {
+  let item_id = items.value.findIndex((item) => item.id === id)
+  console.log(item_id)
+  items.value.splice(item_id, 1)
+  saveItem()
+}
 </script>
 
 <template>
@@ -72,6 +79,7 @@ function handleCheck(id) {
         :item
         :key="item.id + item.checked"
         @on-item-checked="handleCheck"
+        @on-item-delete-pressed="handleDeleteById"
       />
     </div>
   </div>
