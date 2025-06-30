@@ -12,7 +12,8 @@ const nameInput = ref();
 
 const expandIcon = ref();
 
-const emit = defineEmits(["onSubmit"]);
+const emit = defineEmits(["onSubmit", "onDeleteAll"]);
+const props = defineProps(["editModeEnabled"]);
 
 function submit() {
   if (nameInput.value) {
@@ -58,12 +59,17 @@ function clearInput() {
   itemData.value = "";
   extended.value = false;
 }
+
+function deleteAll() {
+  emit("onDeleteAll");
+}
 </script>
 
 <template>
   <div class="bottom-bar-container">
     <div class="normal-width">
-      <div class="expandable-input">
+      <button class="button delete" v-show="props.editModeEnabled" @click="deleteAll">Delete all</button>
+      <div class="expandable-input" v-show="!props.editModeEnabled">
         <input
           class="form-input name"
           @keypress.ctrl.enter.exact="submit"
@@ -83,7 +89,7 @@ function clearInput() {
           placeholder="info"
         />
       </div>
-      <div class="button-group">
+      <div class="button-group" v-show="!props.editModeEnabled">
         <button class="icon-button" @click="handleExpand">
           <Icon v-if="!extended" icon="fa6-solid:chevron-down" class="icon" height="1.3rem"/>
           <Icon v-if="extended" icon="fa6-solid:chevron-up" class="icon" height="1.3rem"/>
@@ -99,7 +105,8 @@ function clearInput() {
 <style scoped>
 .bottom-bar-container {
   background-color: var(--bg-secondary);
-  max-height: var(--bottom-bar-height);
+  max-height: var(--max-bottom-bar-height);
+  min-height: var(--min-bottom-bar-height);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -107,6 +114,9 @@ function clearInput() {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.delete {
+  width: 100%;
 }
 .expandable-input {
   display: flex;
