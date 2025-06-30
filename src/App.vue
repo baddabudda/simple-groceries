@@ -6,6 +6,7 @@ import BottomBar from "./components/BottomBar.vue";
 
 const items = ref([]);
 const currentId = ref(-1);
+const editModeEnabled = ref(false);
 
 const itemsKey = "items";
 const idKey = "last_id";
@@ -26,13 +27,6 @@ function addItem(item) {
     checked: false,
   });
   saveItem();
-}
-
-function deleteItemById(id) {
-  let item_id = items.value.findIndex((item) => item.id == id)
-  items.value.splice(item_id, 1);
-  saveItem();
-  console.log(items.value);
 }
 
 function handleSubmit(item) {
@@ -61,17 +55,31 @@ function handleCheck(id) {
   items.value[item_id].checked = !items.value[item_id].checked
   saveItem()
 }
+
+function handleDeleteById(id) {
+  let item_id = items.value.findIndex((item) => item.id === id)
+  console.log(item_id)
+  items.value.splice(item_id, 1)
+  saveItem()
+}
+
+function changeMode() {
+  editModeEnabled.value = !editModeEnabled.value;
+}
 </script>
 
 <template>
-  <ToolbarComponent @on-delete-all="deleteAll" />
+  <ToolbarComponent :editModeEnabled @on-delete-all="deleteAll" @on-change-mode="changeMode"/>
   <div class="main-container">
+    <button v-if="editModeEnabled" class="delete-button" @click="deleteAll">Delete all</button>
     <div class="container">
       <ItemComponent
         v-for="item in items"
         :item
+        :editModeEnabled
         :key="item.id + item.checked"
         @on-item-checked="handleCheck"
+        @on-item-delete-pressed="handleDeleteById"
       />
     </div>
   </div>
@@ -94,5 +102,15 @@ function handleCheck(id) {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+}
+
+.delete-button {
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  border: 1px solid gray;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 </style>
