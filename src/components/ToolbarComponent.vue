@@ -11,14 +11,11 @@ function onModeClicked() {
 
 <template>
   <div class="toolbar-container">
-    <div class="normal-width">
+    <div class="normal-width toolbar-content">
       <div class="toolbar-name">Simple Groceries</div>
-      <div class="actions-container">
-        <button class="toolbar-action" @click="onModeClicked">
-          <span style="color: white">Edit mode: </span>
-          <span style="color: white">{{ props.editModeEnabled ? "On" : "Off"}}</span>
-        </button>
-      </div>
+      <button class="button" @click="onModeClicked">
+        <span style="color: white">{{ props.editModeEnabled ? "EDIT" : "NORMAL"}}</span>
+      </button>
     </div>
   </div>
 </template>
@@ -35,20 +32,12 @@ function onModeClicked() {
   align-items: center;
   justify-content: center;
 }
+.toolbar-content {
+  display: flex;  
+  align-items: baseline;
+}
 .toolbar-name {
   color: var(--text-primary);
   flex-grow: 1;
-}
-.actions-container {
-  display: flex;
-  align-items: center;
-}
-.toolbar-action {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-.toolbar-action:hover > .icon {
-  color: var(--text-primary);
 }
 </style>

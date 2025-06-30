@@ -91,7 +91,7 @@ function changeMode() {
   min-height: 100vh;
   min-height: 100dvh;
   max-width: var(--max-width-content);
-  padding-bottom: calc(var(--bottom-bar-height) + 0.5rem);
+  padding-bottom: calc(var(--max-bottom-bar-height) + 0.5rem);
   padding-top: calc(var(--top-bar-height) + 0.5rem);
   margin: auto;
 }
